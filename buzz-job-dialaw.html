@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Buzz Job Dialaw — Digital Hub of Opportunities</title>
+<meta name="description" content="The premier digital platform for Toubab Dialaw: real estate, jobs, marketplace, news and local services." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   CSS VARIABLES & RESET
+   ============================================================ */
+:root {
+  --bg-deep:        #03060f;
+  --bg-dark:        #060c1a;
+  --bg-card:        rgba(6, 18, 40, 0.72);
+  --bg-card-hover:  rgba(0, 200, 255, 0.06);
+  --cyan:           #00e5ff;
+  --cyan-dim:       rgba(0, 229, 255, 0.18);
+  --blue:           #1a6cff;
+  --blue-bright:    #4d9eff;
+  --purple:         #9d4eff;
+  --purple-dim:     rgba(157, 78, 255, 0.18);
+  --gold:           #ffb700;
+  --text-primary:   #e8f4ff;
+  --text-secondary: #7fa8c9;
+  --text-muted:     #3d6080;
+  --border:         rgba(0, 229, 255, 0.12);
+  --border-bright:  rgba(0, 229, 255, 0.40);
+  --glow-cyan:      0 0 20px rgba(0,229,255,0.35), 0 0 60px rgba(0,229,255,0.12);
+  --glow-purple:    0 0 20px rgba(157,78,255,0.35), 0 0 60px rgba(157,78,255,0.12);
+  --radius:         14px;
+  --radius-sm:      8px;
+  --ff-display:     'Orbitron', monospace;
+  --ff-body:        'Exo 2', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 4px; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--ff-display); font-size: 10px; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 12px;
+}
+.section-label::before {
+  content: ''; width: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+.section-title {
+  font-family: var(--ff-display); font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 700; line-height: 1.15;
+  background: linear-gradient(135deg, #fff 30%, var(--cyan) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+.section-sub { color: var(--text-secondary); font-size: 15px; max-width: 520px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 26px; border-radius: 6px;
+  font-family: var(--ff-display); font-size: 11px; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.btn::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.07); opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn:hover::after { opacity: 1; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #000; box-shadow: 0 4px 24px rgba(0,229,255,0.3);
+}
+.btn-primary:hover { box-shadow: 0 6px 32px rgba(0,229,255,0.55); transform: translateY(-2px); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-bright);
+  color: var(--cyan);
+}
+.btn-ghost:hover { border-color: var(--cyan); box-shadow: var(--glow-cyan); transform: translateY(-2px); }
+.btn-purple {
+  background: linear-gradient(135deg, var(--purple), #cc44ff);
+  color: #fff; box-shadow: 0 4px 24px rgba(157,78,255,0.3);
+}
+.btn-purple:hover { box-shadow: var(--glow-purple); transform: translateY(-2px); }
+.btn-sm { padding: 8px 18px; font-size: 10px; }
+
+.tag {
+  display: inline-block; padding: 3px 10px; border-radius: 20px;
+  font-size: 10px; font-family: var(--ff-display); letter-spacing: 1px;
+  font-weight: 600; text-transform: uppercase;
+}
+.tag-cyan  { background: rgba(0,229,255,0.12); color: var(--cyan);   border: 1px solid rgba(0,229,255,0.25); }
+.tag-blue  { background: rgba(26,108,255,0.15); color: var(--blue-bright); border: 1px solid rgba(26,108,255,0.3); }
+.tag-purple{ background: rgba(157,78,255,0.15); color: var(--purple); border: 1px solid rgba(157,78,255,0.3); }
+.tag-gold  { background: rgba(255,183,0,0.12); color: var(--gold);   border: 1px solid rgba(255,183,0,0.3); }
+
+/* ============================================================
+   GRID BACKGROUNDS (global ambient)
+   ============================================================ */
+.grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 24px;
+  background: rgba(3,6,15,0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--ff-display); font-weight: 900; font-size: 16px;
+  letter-spacing: 2px;
+}
+.nav-logo .logo-icon {
+  width: 36px; height: 36px; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo .logo-icon svg { width: 36px; height: 36px; }
+.nav-logo .logo-text span { color: var(--cyan); }
+.nav-links {
+  display: flex; align-items: center; gap: 4px; list-style: none;
+}
+.nav-links a {
+  padding: 8px 14px; border-radius: 6px;
+  font-size: 12px; font-family: var(--ff-display); letter-spacing: 1px;
+  color: var(--text-secondary); transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--cyan); background: var(--cyan-dim); }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; padding: 6px;
+}
+.hamburger span {
+  width: 22px; height: 2px; background: var(--cyan);
+  border-radius: 2px; transition: all 0.3s;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding-top: 68px;
+}
+#particleCanvas {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-grid { position: absolute; inset: 0; z-index: 1; }
+.hero-radial {
+  position: absolute; inset: 0; z-index: 2;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(0,80,160,0.18) 0%, transparent 70%);
+}
+.hero-content {
+  position: relative; z-index: 3;
+  text-align: center; max-width: 860px;
+  padding: 20px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 32px;
+  border: 1px solid rgba(0,229,255,0.3);
+  background: rgba(0,229,255,0.06);
+  font-size: 11px; color: var(--cyan); letter-spacing: 2px;
+  font-family: var(--ff-display);
+  animation: fadeInDown 0.8s ease both;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cyan); animation: pulse 2s infinite;
+}
+.hero-title {
+  font-family: var(--ff-display); font-weight: 900;
+  font-size: clamp(42px, 8vw, 96px); line-height: 0.95;
+  letter-spacing: -1px; margin-bottom: 10px;
+  animation: fadeInUp 0.9s 0.1s ease both;
+}
+.hero-title .line1 {
+  display: block;
+  background: linear-gradient(120deg, #ffffff 0%, #a0d4ff 50%, var(--cyan) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-title .line2 {
+  display: block; font-size: 0.45em; letter-spacing: 6px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-top: 6px; font-weight: 600;
+}
+.hero-tagline {
+  font-size: clamp(15px, 2vw, 20px); color: var(--text-secondary);
+  font-weight: 300; margin: 24px auto 40px;
+  max-width: 560px; letter-spacing: 0.5px;
+  animation: fadeInUp 0.9s 0.25s ease both;
+}
+.hero-tagline em { color: var(--cyan); font-style: normal; font-weight: 600; }
+.hero-buttons {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  justify-content: center; margin-bottom: 60px;
+  animation: fadeInUp 0.9s 0.4s ease both;
+}
+.hero-stats {
+  display: flex; gap: 40px; justify-content: center;
+  animation: fadeInUp 0.9s 0.55s ease both;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: var(--ff-display); font-size: 28px; font-weight: 700;
+  background: linear-gradient(135deg, #fff, var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat .lbl { font-size: 11px; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; }
+.hero-scroll {
+  position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: fadeIn 1s 1s ease both;
+}
+.hero-scroll span { font-size: 9px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; }
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--cyan), transparent);
+  animation: scrollDown 1.5s ease infinite;
+}
+
+/* ============================================================
+   SECTION WRAPPER
+   ============================================================ */
+.section {
+  position: relative; padding: 100px 0;
+  overflow: hidden;
+}
+.section:nth-child(even) { background: rgba(6,12,26,0.5); }
+.section-header { margin-bottom: 56px; }
+
+/* ============================================================
+   NAV PILLS (section category nav)
+   ============================================================ */
+.category-strip {
+  padding: 24px 0; background: rgba(6,18,40,0.8);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 68px; z-index: 900;
+}
+.category-inner {
+  display: flex; gap: 10px; overflow-x: auto;
+  max-width: 1280px; margin: 0 auto; padding: 0 24px;
+  scrollbar-width: none;
+}
+.category-inner::-webkit-scrollbar { display: none; }
+.cat-pill {
+  flex-shrink: 0; display: flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 50px;
+  font-family: var(--ff-display); font-size: 10px; letter-spacing: 1.5px;
+  text-transform: uppercase; font-weight: 600;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  color: var(--text-secondary); transition: all 0.25s; cursor: pointer;
+}
+.cat-pill:hover, .cat-pill.active {
+  background: var(--cyan-dim); border-color: var(--cyan);
+  color: var(--cyan); box-shadow: var(--glow-cyan);
+}
+.cat-pill svg { width: 14px; height: 14px; }
+
+/* ============================================================
+   GLASS CARD
+   ============================================================ */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative; overflow: hidden;
+}
+.glass-card::before {
+  content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.glass-card:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), var(--glow-cyan);
+}
+.glass-card .card-corner {
+  position: absolute; top: 0; right: 0;
+  width: 40px; height: 40px; overflow: hidden; pointer-events: none;
+}
+.glass-card .card-corner::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  border-top: 1px solid var(--cyan); border-right: 1px solid var(--cyan);
+  width: 14px; height: 14px;
+}
+
+/* ============================================================
+   REAL ESTATE SECTION
+   ============================================================ */
+.re-filters {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px;
+  align-items: center;
+}
+.filter-select {
+  appearance: none; background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 10px 36px 10px 14px; color: var(--text-secondary);
+  font-family: var(--ff-body); font-size: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300e5ff' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.filter-select:focus { outline: none; border-color: var(--cyan); }
+.filter-select option { background: #060c1a; }
+
+.property-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.property-card { overflow: hidden; }
+.property-img {
+  position: relative; height: 210px; overflow: hidden;
+}
+.property-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.property-card:hover .property-img img { transform: scale(1.06); }
+.property-img .img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(3,6,15,0.85) 0%, transparent 50%);
+}
+.property-img .price-badge {
+  position: absolute; bottom: 14px; left: 14px;
+  font-family: var(--ff-display); font-size: 17px; font-weight: 700;
+  color: var(--cyan); text-shadow: 0 0 14px rgba(0,229,255,0.6);
+}
+.property-img .type-badge { position: absolute; top: 14px; right: 14px; }
+.property-body { padding: 20px; }
+.property-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.property-loc {
+  display: flex; align-items: center; gap: 5px;
+  color: var(--text-secondary); font-size: 13px; margin-bottom: 12px;
+}
+.property-loc svg { width: 12px; height: 12px; color: var(--cyan); }
+.property-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+.property-footer { display: flex; align-items: center; justify-content: space-between; }
+.property-meta { font-size: 12px; color: var(--text-muted); }
+
+/* ============================================================
+   MARKETPLACE SECTION
+   ============================================================ */
+.market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 22px; }
+.market-card .market-img {
+  height: 180px; overflow: hidden; position: relative;
+}
+.market-card .market-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.45s ease;
+}
+.market-card:hover .market-img img { transform: scale(1.08); }
+.market-card .market-img .img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(3,6,15,0.6) 0%, transparent 60%);
+}
+.market-body { padding: 18px; }
+.market-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.market-price {
+  font-family: var(--ff-display); font-size: 18px; font-weight: 700;
+  color: var(--gold); margin-bottom: 8px;
+}
+.market-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 14px; }
+.market-footer { display: flex; align-items: center; justify-content: space-between; }
+.seller { display: flex; align-items: center; gap: 8px; }
+.seller-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+}
+.seller-name { font-size: 12px; color: var(--text-secondary); }
+
+/* ============================================================
+   JOBS SECTION
+   ============================================================ */
+.jobs-layout { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
+.jobs-sidebar { position: sticky; top: 120px; }
+.jobs-filter-group { margin-bottom: 24px; }
+.jobs-filter-title {
+  font-family: var(--ff-display); font-size: 10px; letter-spacing: 2px;
+  color: var(--cyan); text-transform: uppercase; margin-bottom: 12px;
+}
+.checkbox-group { display: flex; flex-direction: column; gap: 8px; }
+.checkbox-label {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--text-secondary); cursor: pointer;
+}
+.checkbox-label input[type=checkbox] { display: none; }
+.checkbox-box {
+  width: 16px; height: 16px; border-radius: 3px;
+  border: 1px solid var(--border-bright); background: transparent;
+  position: relative; transition: all 0.2s;
+}
+.checkbox-label:hover .checkbox-box { border-color: var(--cyan); }
+.checkbox-label input:checked + .checkbox-box {
+  background: var(--cyan); border-color: var(--cyan);
+}
+.checkbox-label input:checked + .checkbox-box::after {
+  content: '✓'; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: #000; font-size: 10px; font-weight: 900;
+}
+
+.jobs-list { display: flex; flex-direction: column; gap: 18px; }
+.job-card { padding: 24px; display: flex; gap: 20px; align-items: flex-start; }
+.job-logo {
+  width: 52px; height: 52px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; font-weight: 700;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.job-body { flex: 1; }
+.job-title { font-size: 16px; font-weight: 600; margin-bottom: 2px; }
+.job-company { font-size: 13px; color: var(--cyan); margin-bottom: 8px; }
+.job-meta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 10px; }
+.job-meta span {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--text-secondary);
+}
+.job-meta svg { width: 12px; height: 12px; }
+.job-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 14px; }
+.job-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.job-cta { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.job-salary {
+  font-family: var(--ff-display); font-size: 14px; font-weight: 700; color: var(--cyan);
+}
+
+/* ============================================================
+   NEWS SECTION
+   ============================================================ */
+.news-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.news-featured { grid-column: span 2; }
+.news-card { overflow: hidden; }
+.news-img { position: relative; overflow: hidden; }
+.news-img img { width: 100%; height: 240px; object-fit: cover; transition: transform 0.5s; }
+.news-featured .news-img img { height: 340px; }
+.news-card:hover .news-img img { transform: scale(1.06); }
+.news-img .img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(3,6,15,0.9) 10%, transparent 60%);
+}
+.news-cat-badge { position: absolute; top: 14px; left: 14px; }
+.news-body { padding: 22px; }
+.news-date { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 8px; }
+.news-title {
+  font-size: 17px; font-weight: 600; line-height: 1.35;
+  margin-bottom: 10px; transition: color 0.2s;
+}
+.news-featured .news-title { font-size: 22px; }
+.news-card:hover .news-title { color: var(--cyan); }
+.news-excerpt { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+.news-footer { display: flex; align-items: center; justify-content: space-between; }
+.news-author { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+.news-author .av {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: #000;
+}
+.read-more {
+  font-family: var(--ff-display); font-size: 9px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--cyan);
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* ============================================================
+   SERVICES SECTION
+   ============================================================ */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.service-card {
+  padding: 30px 24px; text-align: center;
+  cursor: pointer;
+}
+.service-icon {
+  width: 64px; height: 64px; border-radius: 16px; margin: 0 auto 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(26,108,255,0.1));
+  border: 1px solid rgba(0,229,255,0.2);
+  transition: all 0.3s;
+}
+.service-card:hover .service-icon {
+  background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(26,108,255,0.2));
+  box-shadow: var(--glow-cyan); transform: scale(1.08);
+}
+.service-name { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.service-count { font-size: 12px; color: var(--text-muted); }
+
+/* ============================================================
+   MAP SECTION
+   ============================================================ */
+#map-section { padding: 100px 0; }
+.map-wrapper {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--border); height: 500px;
+}
+#mapCanvas {
+  width: 100%; height: 100%; background: #050e1c;
+}
+.map-overlay-ui {
+  position: absolute; top: 20px; left: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.map-legend {
+  position: absolute; bottom: 20px; right: 20px;
+  background: rgba(3,6,15,0.85); backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px;
+}
+.legend-title { font-family: var(--ff-display); font-size: 10px; letter-spacing: 2px; color: var(--cyan); margin-bottom: 10px; text-transform: uppercase; }
+.legend-items { display: flex; flex-direction: column; gap: 6px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+/* ============================================================
+   CTA SECTION
+   ============================================================ */
+#cta-section {
+  padding: 100px 0; text-align: center; position: relative; overflow: hidden;
+}
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(0,80,200,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-box {
+  max-width: 700px; margin: 0 auto;
+  padding: 60px; background: var(--bg-card);
+  border: 1px solid var(--border-bright); border-radius: 20px;
+  backdrop-filter: blur(20px); position: relative;
+}
+.cta-box::before {
+  content: ''; position: absolute; inset: -1px; border-radius: 21px;
+  background: linear-gradient(135deg, rgba(0,229,255,0.3), rgba(157,78,255,0.3), transparent);
+  z-index: -1;
+}
+.cta-title {
+  font-family: var(--ff-display); font-size: clamp(24px, 3.5vw, 38px);
+  font-weight: 700; margin-bottom: 14px;
+  background: linear-gradient(135deg, #fff 30%, var(--cyan));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.cta-sub { color: var(--text-secondary); margin-bottom: 36px; font-size: 15px; }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: rgba(3,6,15,0.95); border-top: 1px solid var(--border);
+  padding: 60px 0 30px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand .nav-logo { margin-bottom: 16px; }
+.footer-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; max-width: 280px; margin-bottom: 24px; }
+.social-links { display: flex; gap: 10px; }
+.social-link {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.2s;
+}
+.social-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); box-shadow: var(--glow-cyan); }
+.footer-col h4 {
+  font-family: var(--ff-display); font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--cyan); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+.footer-col ul a:hover { color: var(--cyan); }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--text-muted);
+}
+.footer-bottom .made { display: flex; align-items: center; gap: 6px; }
+.footer-bottom .made span { color: var(--cyan); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeInDown {
+  from { opacity:0; transform: translateY(-20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity:0; transform: translateY(30px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; } to { opacity:1; }
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.5; transform:scale(1.5); }
+}
+@keyframes scrollDown {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@keyframes glitch {
+  0%,100% { clip-path: inset(0 0 100% 0); }
+  10%  { clip-path: inset(20% 0 60% 0); transform: translateX(4px); }
+  20%  { clip-path: inset(60% 0 20% 0); transform: translateX(-4px); }
+  30%  { clip-path: inset(0 0 0 0); transform: translateX(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+@keyframes borderRotate {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes scanline {
+  0%   { top: -5%; }
+  100% { top: 105%; }
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+.reveal-d4 { transition-delay: 0.4s; }
+.reveal-d5 { transition-delay: 0.5s; }
+
+/* Neon text flicker */
+.neon-text {
+  animation: neonFlicker 4s infinite;
+}
+@keyframes neonFlicker {
+  0%,19%,21%,23%,25%,54%,56%,100% {
+    text-shadow: 0 0 5px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan);
+  }
+  20%,24%,55% { text-shadow: none; }
+}
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(3,6,15,0.97); backdrop-filter: blur(20px);
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--ff-display); font-size: 18px; letter-spacing: 2px;
+  color: var(--text-secondary); transition: color 0.2s; text-transform: uppercase;
+}
+.mobile-menu a:hover { color: var(--cyan); }
+.mobile-close {
+  position: absolute; top: 24px; right: 24px;
+  background: none; color: var(--cyan); font-size: 28px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .news-grid { grid-template-columns: 1fr 1fr; }
+  .news-featured { grid-column: span 2; }
+  .jobs-layout { grid-template-columns: 1fr; }
+  .jobs-sidebar { position: static; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta .btn-ghost { display: none; }
+  .hamburger { display: flex; }
+  .hero-stats { gap: 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-featured { grid-column: span 1; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .cta-box { padding: 36px 24px; }
+  .property-grid { grid-template-columns: 1fr; }
+  .market-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+@media (max-width: 480px) {
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .hero-stats { flex-direction: column; gap: 16px; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="16" stroke="#00e5ff" stroke-width="1.2" opacity="0.4"/>
+          <circle cx="18" cy="18" r="10" stroke="#00e5ff" stroke-width="1.4" opacity="0.6"/>
+          <circle cx="18" cy="18" r="4"  fill="#00e5ff" opacity="0.9"/>
+          <path d="M4 18 Q11 10 18 18 Q25 26 32 18" stroke="#00e5ff" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <path d="M18 4 Q26 11 18 18 Q10 25 18 32" stroke="#1a6cff" stroke-width="1.5" fill="none" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="logo-text">BUZZ JOB <span>DIALAW</span></span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#real-estate">Real Estate</a></li>
+      <li><a href="#marketplace">Marketplace</a></li>
+      <li><a href="#jobs">Jobs</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#map-section">Map</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="#" class="btn btn-primary btn-sm">Post Listing</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#real-estate"  onclick="closeMobile()">Real Estate</a>
+  <a href="#marketplace"  onclick="closeMobile()">Marketplace</a>
+  <a href="#jobs"         onclick="closeMobile()">Jobs</a>
+  <a href="#news"         onclick="closeMobile()">News</a>
+  <a href="#services"     onclick="closeMobile()">Services</a>
+  <a href="#map-section"  onclick="closeMobile()">Map</a>
+  <a href="#"             onclick="closeMobile()">Sign In</a>
+  <a href="#" class="btn btn-primary">Post Listing</a>
+</div>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="hero">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-grid grid-bg"></div>
+  <div class="hero-radial"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      TOUBAB DIALAW • SENEGAL • LIVE PLATFORM
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line1">BUZZ JOB</span>
+      <span class="line2">DIALAW</span>
+    </h1>
+
+    <p class="hero-tagline">
+      The <em>Digital Hub</em> of Opportunities in Dialaw —<br/>
+      Real Estate · Jobs · Marketplace · Local News · Services
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#real-estate" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Explore Listings
+      </a>
+      <a href="#" class="btn btn-purple">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Post an Announcement
+      </a>
+      <a href="#news" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/><path d="M4 6H2v14a2 2 0 002 2h14"/></svg>
+        Discover Local News
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num" id="stat1">0</div>
+        <div class="lbl">Listings</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" id="stat2">0</div>
+        <div class="lbl">Active Jobs</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" id="stat3">0</div>
+        <div class="lbl">Products</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num" id="stat4">0</div>
+        <div class="lbl">Local Partners</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATEGORY STRIP
+     ============================================================ -->
+<div class="category-strip">
+  <div class="category-inner">
+    <button class="cat-pill active" onclick="scrollTo('#real-estate')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      Real Estate
+    </button>
+    <button class="cat-pill" onclick="scrollTo('#marketplace')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Marketplace
+    </button>
+    <button class="cat-pill" onclick="scrollTo('#jobs')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+      Jobs
+    </button>
+    <button class="cat-pill" onclick="scrollTo('#news')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v2"/><path d="M4 6H2v14a2 2 0 002 2h14"/></svg>
+      Local News
+    </button>
+    <button class="cat-pill" onclick="scrollTo('#services')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14"/><path d="M4.93 4.93a10 10 0 000 14.14"/></svg>
+      Services
+    </button>
+    <button class="cat-pill" onclick="scrollTo('#map-section')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+      Map
+    </button>
+  </div>
+</div>
+
+<!-- ============================================================
+     REAL ESTATE SECTION
+     ============================================================ -->
+<section class="section" id="real-estate">
+  <div class="grid-bg" style="opacity:0.5"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Real Estate & Land</div>
+      <h2 class="section-title">Properties in Toubab Dialaw</h2>
+      <p class="section-sub">Browse land, houses, rentals and development projects in the heart of Dialaw.</p>
+    </div>
+
+    <div class="re-filters reveal">
+      <select class="filter-select" aria-label="Property type">
+        <option>All Types</option>
+        <option>Land for Sale</option>
+        <option>House</option>
+        <option>Rental</option>
+        <option>Development Project</option>
+      </select>
+      <select class="filter-select" aria-label="Location">
+        <option>All Locations</option>
+        <option>Dialaw Centre</option>
+        <option>Bord de mer</option>
+        <option>Route de Dakar</option>
+        <option>Zone résidentielle</option>
+      </select>
+      <select class="filter-select" aria-label="Price range">
+        <option>Any Price</option>
+        <option>Under 5M FCFA</option>
+        <option>5M – 20M FCFA</option>
+        <option>20M – 50M FCFA</option>
+        <option>50M+ FCFA</option>
+      </select>
+      <button class="btn btn-primary btn-sm">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Search
+      </button>
+    </div>
+
+    <div class="property-grid">
+
+      <!-- Card 1 -->
+      <div class="glass-card property-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Villa Océan" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">45 M FCFA</div>
+          <span class="type-badge tag tag-cyan">House</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Villa Océan Dialaw</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bord de mer, Dialaw
+          </p>
+          <p class="property-desc">Stunning 4-bedroom villa 80m from the ocean. Private terrace, tropical garden, modern finishes throughout.</p>
+          <div class="property-footer">
+            <span class="property-meta">4 beds · 2 baths · 280 m²</span>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card property-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Terrain" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">12 M FCFA</div>
+          <span class="type-badge tag tag-purple">Land</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Terrain Titre Foncier</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Zone résidentielle, Dialaw
+          </p>
+          <p class="property-desc">600 m² flat plot with full title deed. Electricity and water access. Ideal for residential construction.</p>
+          <div class="property-footer">
+            <span class="property-meta">600 m² · TF</span>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card property-card reveal reveal-d3">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Maison" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">250K/mo</div>
+          <span class="type-badge tag tag-gold">Rental</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Maison à louer – Dialaw Centre</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dialaw Centre
+          </p>
+          <p class="property-desc">Comfortable 3-bedroom home available for monthly rental. Gated compound, parking space, quiet neighbourhood.</p>
+          <div class="property-footer">
+            <span class="property-meta">3 beds · 1 bath · 150 m²</span>
+            <button class="btn btn-ghost btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="glass-card property-card reveal reveal-d4">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=600&q=80" alt="Terrain bord mer" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">28 M FCFA</div>
+          <span class="type-badge tag tag-purple">Land</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Terrain Vue Mer – Accès Direct</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Côte de Dialaw
+          </p>
+          <p class="property-desc">Prime beachfront land 400 m² with unobstructed sea views. Rare opportunity — only 2 plots remaining.</p>
+          <div class="property-footer">
+            <span class="property-meta">400 m² · Beachfront</span>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="glass-card property-card reveal reveal-d5">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Villa moderne" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">65 M FCFA</div>
+          <span class="type-badge tag tag-cyan">House</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Villa Contemporaine Neuve</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Route de Dakar, Dialaw
+          </p>
+          <p class="property-desc">Brand new contemporary villa with 5 rooms, infinity pool, solar panels and home automation system.</p>
+          <div class="property-footer">
+            <span class="property-meta">5 beds · 3 baths · 380 m²</span>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="glass-card property-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="property-img">
+          <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Projet" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <div class="price-badge">Sur plan</div>
+          <span class="type-badge tag tag-blue">Project</span>
+        </div>
+        <div class="property-body">
+          <h3 class="property-title">Résidence Les Baobabs</h3>
+          <p class="property-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Nouveau Quartier, Dialaw
+          </p>
+          <p class="property-desc">Off-plan residential complex with 12 units. Delivery Q4 2025. Investment opportunity — guaranteed returns.</p>
+          <div class="property-footer">
+            <span class="property-meta">12 units · From 8M FCFA</span>
+            <button class="btn btn-ghost btn-sm">Learn More</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /property-grid -->
+
+    <div style="text-align:center;margin-top:44px" class="reveal">
+      <a href="#" class="btn btn-ghost">
+        View All Properties
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARKETPLACE SECTION
+     ============================================================ -->
+<section class="section" id="marketplace">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Local Marketplace</div>
+      <h2 class="section-title">Products for Sale</h2>
+      <p class="section-sub">Buy and sell phones, vehicles, furniture, electronics and more from local sellers.</p>
+    </div>
+
+    <div class="market-grid">
+
+      <div class="glass-card market-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80" alt="Téléphone" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-cyan" style="margin-bottom:8px;display:inline-block">Electronics</span>
+          <h3 class="market-name">Samsung Galaxy S23 — Like New</h3>
+          <div class="market-price">95 000 FCFA</div>
+          <p class="market-desc">Excellent condition, all accessories included. Screen protector applied. 256GB storage.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">MK</div>
+              <span class="seller-name">Moussa K.</span>
+            </div>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card market-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Moto" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-purple" style="margin-bottom:8px;display:inline-block">Vehicles</span>
+          <h3 class="market-name">Moto Jakarta 125cc — 2022</h3>
+          <div class="market-price">320 000 FCFA</div>
+          <p class="market-desc">Well maintained Jakarta 125cc. Low mileage, recent oil change. All papers included.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">AS</div>
+              <span class="seller-name">Aminata S.</span>
+            </div>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card market-card reveal reveal-d3">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80" alt="Canapé" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-gold" style="margin-bottom:8px;display:inline-block">Furniture</span>
+          <h3 class="market-name">Canapé Salon 3 places</h3>
+          <div class="market-price">85 000 FCFA</div>
+          <p class="market-desc">Quality sofa in excellent condition. Deep blue fabric, firm cushions. Available immediately.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">FD</div>
+              <span class="seller-name">Fatou D.</span>
+            </div>
+            <button class="btn btn-ghost btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card market-card reveal reveal-d4">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=500&q=80" alt="Laptop" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-cyan" style="margin-bottom:8px;display:inline-block">Electronics</span>
+          <h3 class="market-name">Laptop HP EliteBook — i5</h3>
+          <div class="market-price">280 000 FCFA</div>
+          <p class="market-desc">HP EliteBook 840 G6. Core i5, 8GB RAM, 256GB SSD. Windows 11 Pro, charger included.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">IB</div>
+              <span class="seller-name">Ibrahima B.</span>
+            </div>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card market-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80" alt="Construction" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-blue" style="margin-bottom:8px;display:inline-block">Construction</span>
+          <h3 class="market-name">Matériaux Construction — Lot</h3>
+          <div class="market-price">Négociable</div>
+          <p class="market-desc">Lot of 500 cement bags + iron rods 12mm. Leftover from finished project. Delivery possible.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">OD</div>
+              <span class="seller-name">Omar D.</span>
+            </div>
+            <button class="btn btn-ghost btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card market-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="market-img">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&q=80" alt="Vélo" loading="lazy"/>
+          <div class="img-overlay"></div>
+        </div>
+        <div class="market-body">
+          <span class="tag tag-purple" style="margin-bottom:8px;display:inline-block">Vehicles</span>
+          <h3 class="market-name">Vélo électrique — Citybike</h3>
+          <div class="market-price">180 000 FCFA</div>
+          <p class="market-desc">Electric city bike, 60km range. Perfect condition. Charged and ready. Great for Dialaw streets.</p>
+          <div class="market-footer">
+            <div class="seller">
+              <div class="seller-avatar">NF</div>
+              <span class="seller-name">Ndeye F.</span>
+            </div>
+            <button class="btn btn-primary btn-sm">Contact</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /market-grid -->
+
+    <div style="text-align:center;margin-top:44px" class="reveal">
+      <a href="#" class="btn btn-ghost">
+        Browse All Products
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     JOBS SECTION
+     ============================================================ -->
+<section class="section" id="jobs">
+  <div class="grid-bg" style="opacity:0.4"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Jobs & Opportunities</div>
+      <h2 class="section-title">Local Employment</h2>
+      <p class="section-sub">Find jobs, freelance gigs and community work opportunities in Toubab Dialaw and surrounding areas.</p>
+    </div>
+
+    <div class="jobs-layout">
+      <!-- Sidebar -->
+      <aside class="glass-card jobs-sidebar reveal" style="padding:28px">
+        <div class="card-corner"></div>
+        <div class="jobs-filter-group">
+          <div class="jobs-filter-title">Job Type</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" checked/><span class="checkbox-box"></span>Full Time</label>
+            <label class="checkbox-label"><input type="checkbox" checked/><span class="checkbox-box"></span>Part Time</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Freelance</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Temporary</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Community</label>
+          </div>
+        </div>
+        <div class="jobs-filter-group">
+          <div class="jobs-filter-title">Sector</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" checked/><span class="checkbox-box"></span>Tourism & Hospitality</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Construction</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Fishing & Agriculture</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Commerce</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Digital / Tech</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Education</label>
+          </div>
+        </div>
+        <div class="jobs-filter-group">
+          <div class="jobs-filter-title">Location</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox" checked/><span class="checkbox-box"></span>Dialaw</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Mbour</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Saly</label>
+            <label class="checkbox-label"><input type="checkbox"/><span class="checkbox-box"></span>Remote</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%">Apply Filters</button>
+      </aside>
+
+      <!-- Jobs list -->
+      <div class="jobs-list">
+
+        <div class="glass-card job-card reveal">
+          <div class="card-corner"></div>
+          <div class="job-logo">🏨</div>
+          <div class="job-body">
+            <h3 class="job-title">Réceptionniste Hôtel Étoile de Mer</h3>
+            <div class="job-company">Hôtel Étoile de Mer · Dialaw</div>
+            <div class="job-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Bord de mer, Dialaw</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full Time</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Posted 2 days ago</span>
+            </div>
+            <p class="job-desc">Seeking a bilingual receptionist (French/English) for 4-star hotel. Experience in hospitality required. Accommodation possible.</p>
+            <div class="job-tags">
+              <span class="tag tag-cyan">Hospitality</span>
+              <span class="tag tag-blue">Full Time</span>
+              <span class="tag tag-gold">Housing Included</span>
+            </div>
+          </div>
+          <div class="job-cta">
+            <div class="job-salary">180K FCFA/mo</div>
+            <button class="btn btn-primary btn-sm">Apply Now</button>
+            <button class="btn btn-ghost btn-sm">Save</button>
+          </div>
+        </div>
+
+        <div class="glass-card job-card reveal reveal-d1">
+          <div class="card-corner"></div>
+          <div class="job-logo">🔨</div>
+          <div class="job-body">
+            <h3 class="job-title">Chef de Chantier — Construction Résidentielle</h3>
+            <div class="job-company">SeneBuild SARL · Mbour</div>
+            <div class="job-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Dialaw & Mbour</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full Time</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Posted 5 days ago</span>
+            </div>
+            <p class="job-desc">Experienced site manager needed for residential villa construction project. 3+ years experience, ability to manage teams of 10+.</p>
+            <div class="job-tags">
+              <span class="tag tag-purple">Construction</span>
+              <span class="tag tag-blue">Management</span>
+            </div>
+          </div>
+          <div class="job-cta">
+            <div class="job-salary">350K FCFA/mo</div>
+            <button class="btn btn-primary btn-sm">Apply Now</button>
+            <button class="btn btn-ghost btn-sm">Save</button>
+          </div>
+        </div>
+
+        <div class="glass-card job-card reveal reveal-d2">
+          <div class="card-corner"></div>
+          <div class="job-logo">🌊</div>
+          <div class="job-body">
+            <h3 class="job-title">Guide Surf & Tourisme Nautique</h3>
+            <div class="job-company">Dialaw Surf Club · Dialaw</div>
+            <div class="job-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Plage de Dialaw</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Seasonal</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Posted today</span>
+            </div>
+            <p class="job-desc">Passionate surf instructor / beach guide for an eco-tourism project. International tourists. Languages: French + English + Wolof a plus.</p>
+            <div class="job-tags">
+              <span class="tag tag-cyan">Tourism</span>
+              <span class="tag tag-gold">Seasonal</span>
+              <span class="tag tag-blue">Tips Included</span>
+            </div>
+          </div>
+          <div class="job-cta">
+            <div class="job-salary">120K + Tips</div>
+            <button class="btn btn-primary btn-sm">Apply Now</button>
+            <button class="btn btn-ghost btn-sm">Save</button>
+          </div>
+        </div>
+
+        <div class="glass-card job-card reveal reveal-d3">
+          <div class="card-corner"></div>
+          <div class="job-logo">💻</div>
+          <div class="job-body">
+            <h3 class="job-title">Développeur Web Freelance</h3>
+            <div class="job-company">Startup Locale · Remote</div>
+            <div class="job-meta">
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote (Dialaw)</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Freelance</span>
+              <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Posted 1 day ago</span>
+            </div>
+            <p class="job-desc">Looking for a React / Next.js developer to build a local e-commerce platform. Project duration: 3 months. Flexible hours.</p>
+            <div class="job-tags">
+              <span class="tag tag-cyan">Tech</span>
+              <span class="tag tag-purple">Freelance</span>
+              <span class="tag tag-blue">Remote</span>
+            </div>
+          </div>
+          <div class="job-cta">
+            <div class="job-salary">Project Based</div>
+            <button class="btn btn-primary btn-sm">Apply Now</button>
+            <button class="btn btn-ghost btn-sm">Save</button>
+          </div>
+        </div>
+
+      </div><!-- /jobs-list -->
+    </div><!-- /jobs-layout -->
+
+    <div style="text-align:center;margin-top:44px" class="reveal">
+      <a href="#" class="btn btn-ghost">
+        View All Job Listings
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     NEWS SECTION
+     ============================================================ -->
+<section class="section" id="news">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Local News & Community</div>
+      <h2 class="section-title">Latest from Dialaw</h2>
+      <p class="section-sub">Stay informed on infrastructure, cultural events, community news and local updates.</p>
+    </div>
+
+    <div class="news-grid">
+      <!-- Featured Article -->
+      <div class="glass-card news-card news-featured reveal">
+        <div class="card-corner"></div>
+        <div class="news-img">
+          <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&q=80" alt="Infrastructure Dialaw" loading="lazy"/>
+          <div class="img-overlay"></div>
+          <span class="news-cat-badge tag tag-cyan">Infrastructure</span>
+        </div>
+        <div class="news-body">
+          <div class="news-date">MARCH 14, 2026</div>
+          <h3 class="news-title">New Road Connecting Dialaw to Mbour Highway Officially Inaugurated</h3>
+          <p class="news-excerpt">The long-awaited 12km road link between Toubab Dialaw and the Mbour-Dakar expressway was officially inaugurated this week, drastically reducing travel time for residents and opening new economic opportunities for the coastal community.</p>
+          <div class="news-footer">
+            <div class="news-author">
+              <div class="av">JD</div>
+              Jean-Dialo Mbaye
+            </div>
+            <span class="read-more">Read More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div class="glass-card news-card reveal reveal-d1">
+          <div class="card-corner"></div>
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Festival" loading="lazy"/>
+            <div class="img-overlay"></div>
+            <span class="news-cat-badge tag tag-purple">Culture</span>
+          </div>
+          <div class="news-body">
+            <div class="news-date">MARCH 10, 2026</div>
+            <h3 class="news-title">Festival des Arts de Dialaw Announces 2026 Edition — Biggest Yet</h3>
+            <p class="news-excerpt">The iconic Dialaw arts festival returns for its 18th edition with over 40 artists from across West Africa.</p>
+            <div class="news-footer">
+              <div class="news-author"><div class="av">AF</div>Astou Faye</div>
+              <span class="read-more">Read More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card news-card reveal reveal-d2">
+          <div class="card-corner"></div>
+          <div class="news-img">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Pêche" loading="lazy"/>
+            <div class="img-overlay"></div>
+            <span class="news-cat-badge tag tag-gold">Community</span>
+          </div>
+          <div class="news-body">
+            <div class="news-date">MARCH 8, 2026</div>
+            <h3 class="news-title">Local Fishermen Launch Cooperative for Direct Market Access</h3>
+            <p class="news-excerpt">A new cooperative formed by 35 fishing families will allow direct-to-consumer sales, cutting out middlemen.</p>
+            <div class="news-footer">
+              <div class="news-author"><div class="av">BS</div>Boubacar Sow</div>
+              <span class="read-more">Read More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /news-grid -->
+
+    <!-- Additional news row -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;margin-top:24px">
+
+      <div class="glass-card news-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="news-img" style="height:160px">
+          <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=600&q=80" alt="Énergie solaire" loading="lazy" style="height:100%;object-fit:cover;width:100%;transition:transform 0.5s"/>
+          <div class="img-overlay"></div>
+          <span class="news-cat-badge tag tag-cyan">Energy</span>
+        </div>
+        <div class="news-body" style="padding:16px">
+          <div class="news-date">MARCH 5, 2026</div>
+          <h3 class="news-title" style="font-size:15px">Solar Microgrids to Power 200 Dialaw Homes by Q3</h3>
+          <p class="news-excerpt" style="display:none"></p>
+          <div class="news-footer"><div class="news-author"><div class="av">KD</div>Khadija D.</div><span class="read-more">Read More →</span></div>
+        </div>
+      </div>
+
+      <div class="glass-card news-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="news-img" style="height:160px">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80" alt="École" loading="lazy" style="height:100%;object-fit:cover;width:100%;transition:transform 0.5s"/>
+          <div class="img-overlay"></div>
+          <span class="news-cat-badge tag tag-blue">Education</span>
+        </div>
+        <div class="news-body" style="padding:16px">
+          <div class="news-date">MARCH 1, 2026</div>
+          <h3 class="news-title" style="font-size:15px">New Middle School Opens — 600 Students to Benefit</h3>
+          <p class="news-excerpt" style="display:none"></p>
+          <div class="news-footer"><div class="news-author"><div class="av">MN</div>Mariama N.</div><span class="read-more">Read More →</span></div>
+        </div>
+      </div>
+
+      <div class="glass-card news-card reveal reveal-d3">
+        <div class="card-corner"></div>
+        <div class="news-img" style="height:160px">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Commerce" loading="lazy" style="height:100%;object-fit:cover;width:100%;transition:transform 0.5s"/>
+          <div class="img-overlay"></div>
+          <span class="news-cat-badge tag tag-gold">Commerce</span>
+        </div>
+        <div class="news-body" style="padding:16px">
+          <div class="news-date">FEB 27, 2026</div>
+          <h3 class="news-title" style="font-size:15px">Digital Payments Adoption Grows 300% in Dialaw Markets</h3>
+          <p class="news-excerpt" style="display:none"></p>
+          <div class="news-footer"><div class="news-author"><div class="av">OB</div>Omar B.</div><span class="read-more">Read More →</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:44px" class="reveal">
+      <a href="#" class="btn btn-ghost">
+        Read All Articles
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES SECTION
+     ============================================================ -->
+<section class="section" id="services">
+  <div class="grid-bg" style="opacity:0.4"></div>
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Services Directory</div>
+      <h2 class="section-title">Local Service Providers</h2>
+      <p class="section-sub">Find trusted local businesses and service providers in Toubab Dialaw.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="glass-card service-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="service-icon">🏥</div>
+        <div class="service-name">Medical & Health</div>
+        <div class="service-count">8 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="service-icon">🍽️</div>
+        <div class="service-name">Restaurants & Food</div>
+        <div class="service-count">14 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d3">
+        <div class="card-corner"></div>
+        <div class="service-icon">🔧</div>
+        <div class="service-name">Repair & Mechanics</div>
+        <div class="service-count">6 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d4">
+        <div class="card-corner"></div>
+        <div class="service-icon">🏦</div>
+        <div class="service-name">Finance & Banking</div>
+        <div class="service-count">4 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d5">
+        <div class="card-corner"></div>
+        <div class="service-icon">🚗</div>
+        <div class="service-name">Transport & Taxi</div>
+        <div class="service-count">11 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="service-icon">📦</div>
+        <div class="service-name">Delivery & Logistics</div>
+        <div class="service-count">5 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="service-icon">📐</div>
+        <div class="service-name">Architecture & BTP</div>
+        <div class="service-count">9 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d3">
+        <div class="card-corner"></div>
+        <div class="service-icon">💈</div>
+        <div class="service-name">Beauty & Wellness</div>
+        <div class="service-count">7 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d4">
+        <div class="card-corner"></div>
+        <div class="service-icon">🎓</div>
+        <div class="service-name">Education & Tutoring</div>
+        <div class="service-count">12 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d5">
+        <div class="card-corner"></div>
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Digital & IT</div>
+        <div class="service-count">3 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d1">
+        <div class="card-corner"></div>
+        <div class="service-icon">🌊</div>
+        <div class="service-name">Tourism & Leisure</div>
+        <div class="service-count">15 providers</div>
+      </div>
+      <div class="glass-card service-card reveal reveal-d2">
+        <div class="card-corner"></div>
+        <div class="service-icon">🐟</div>
+        <div class="service-name">Fishing & Marine</div>
+        <div class="service-count">10 providers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAP SECTION
+     ============================================================ -->
+<section class="section" id="map-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Interactive Map</div>
+      <h2 class="section-title">Explore Dialaw on the Map</h2>
+      <p class="section-sub">Visualize land, houses, businesses and services across Toubab Dialaw.</p>
+    </div>
+
+    <div class="map-wrapper reveal">
+      <canvas id="mapCanvas"></canvas>
+
+      <!-- Legend -->
+      <div class="map-legend">
+        <div class="legend-title">Map Legend</div>
+        <div class="legend-items">
+          <div class="legend-item"><div class="legend-dot" style="background:#00e5ff"></div>Real Estate</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ffb700"></div>Marketplace</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#9d4eff"></div>Services</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#1a6cff"></div>Jobs</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="map-overlay-ui">
+        <button class="btn btn-ghost btn-sm" onclick="zoomIn()">＋ Zoom In</button>
+        <button class="btn btn-ghost btn-sm" onclick="zoomOut()">－ Zoom Out</button>
+        <button class="btn btn-ghost btn-sm" onclick="resetMap()">⊕ Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA SECTION
+     ============================================================ -->
+<section id="cta-section" class="section">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="cta-box reveal">
+      <div class="section-label" style="justify-content:center">Get Started Today</div>
+      <h2 class="cta-title">Join the Dialaw Digital Community</h2>
+      <p class="cta-sub">Post your listing, find your next opportunity, or stay connected with everything happening in Toubab Dialaw.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Post a Free Listing
+        </a>
+        <a href="#" class="btn btn-ghost">Create Account</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="16" stroke="#00e5ff" stroke-width="1.2" opacity="0.4"/>
+              <circle cx="18" cy="18" r="10" stroke="#00e5ff" stroke-width="1.4" opacity="0.6"/>
+              <circle cx="18" cy="18" r="4"  fill="#00e5ff" opacity="0.9"/>
+              <path d="M4 18 Q11 10 18 18 Q25 26 32 18" stroke="#00e5ff" stroke-width="1.5" fill="none" opacity="0.8"/>
+            </svg>
+          </div>
+          <span class="logo-text">BUZZ JOB <span>DIALAW</span></span>
+        </a>
+        <p class="footer-desc">The premier digital hub for Toubab Dialaw — connecting people, opportunities and the community through technology.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="Instagram">ig</a>
+          <a href="#" class="social-link" aria-label="WhatsApp">wa</a>
+          <a href="#" class="social-link" aria-label="X">𝕏</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">Real Estate</a></li>
+          <li><a href="#">Marketplace</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">Local News</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Interactive Map</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Post a Listing</a></li>
+          <li><a href="#">Create Account</a></li>
+          <li><a href="#">Submit News</a></li>
+          <li><a href="#">Become a Partner</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="mailto:hello@buzzjobdialaw.sn">hello@buzzjobdialaw.sn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Buzz Job Dialaw. All rights reserved.</span>
+      <div class="made">Built with <span>♥</span> for Toubab Dialaw, Senegal</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+/* -------- Particle Canvas -------- */
+(function initParticles() {
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], animId;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = rand(0, W);
+      this.y = rand(0, H);
+      this.vx = rand(-0.3, 0.3);
+      this.vy = rand(-0.3, 0.3);
+      this.r = rand(0.5, 2.5);
+      this.alpha = rand(0.2, 0.8);
+      this.color = Math.random() > 0.5 ? '0,229,255' : '26,108,255';
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy;
+      if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+  function connectParticles() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,229,255,${0.08 * (1 - dist/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    connectParticles();
+    animId = requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* -------- Map Canvas -------- */
+(function initMap() {
+  const canvas = document.getElementById('mapCanvas');
+  const ctx = canvas.getContext('2d');
+  let scale = 1, offsetX = 0, offsetY = 0;
+  let isDragging = false, lastX, lastY;
+
+  function resize() {
+    canvas.width  = canvas.parentElement.clientWidth;
+    canvas.height = 500;
+    draw();
+  }
+
+  const points = [
+    { x: 0.35, y: 0.40, color: '#00e5ff',  label: 'Villa Océan',        type: 'Real Estate' },
+    { x: 0.55, y: 0.55, color: '#00e5ff',  label: 'Terrain TF',         type: 'Real Estate' },
+    { x: 0.45, y: 0.30, color: '#ffb700',  label: 'Moto Jakarta',        type: 'Marketplace' },
+    { x: 0.65, y: 0.45, color: '#9d4eff',  label: 'Hôtel Étoile',        type: 'Services' },
+    { x: 0.30, y: 0.60, color: '#1a6cff',  label: 'Chef Chantier',       type: 'Jobs' },
+    { x: 0.72, y: 0.35, color: '#9d4eff',  label: 'Restaurant',          type: 'Services' },
+    { x: 0.50, y: 0.70, color: '#00e5ff',  label: 'Maison Rental',       type: 'Real Estate' },
+    { x: 0.22, y: 0.48, color: '#ffb700',  label: 'Samsung S23',         type: 'Marketplace' },
+    { x: 0.60, y: 0.22, color: '#1a6cff',  label: 'Guide Surf',          type: 'Jobs' },
+    { x: 0.80, y: 0.60, color: '#9d4eff',  label: 'Surf Club',           type: 'Services' },
+    { x: 0.40, y: 0.75, color: '#00e5ff',  label: 'Villa Cont.',         type: 'Real Estate' },
+    { x: 0.15, y: 0.35, color: '#1a6cff',  label: 'Dev Web',             type: 'Jobs' },
+  ];
+
+  let hovered = null;
+
+  function toCanvas(px, py) {
+    return {
+      x: px * canvas.width  * scale + offsetX,
+      y: py * canvas.height * scale + offsetY
+    };
+  }
+
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(0,229,255,0.05)';
+    ctx.lineWidth = 1;
+    const step = 60;
+    for (let x = offsetX % step; x < canvas.width; x += step) {
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x, canvas.height); ctx.stroke();
+    }
+    for (let y = offsetY % step; y < canvas.height; y += step) {
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width, y); ctx.stroke();
+    }
+  }
+
+  function drawRoads() {
+    const roads = [
+      [[0.1,0.5],[0.4,0.5],[0.6,0.4],[0.9,0.4]],
+      [[0.5,0.1],[0.5,0.9]],
+      [[0.2,0.2],[0.8,0.8]],
+    ];
+    ctx.setLineDash([8,6]);
+    ctx.strokeStyle = 'rgba(26,108,255,0.2)';
+    ctx.lineWidth = 2;
+    roads.forEach(road => {
+      ctx.beginPath();
+      road.forEach(([px,py],i) => {
+        const {x,y} = toCanvas(px,py);
+        i === 0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+  }
+
+  function drawOcean() {
+    const grad = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.3);
+    grad.addColorStop(0, 'rgba(0,40,100,0.5)');
+    grad.addColorStop(1, 'rgba(0,20,60,0.1)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height * 0.28);
+
+    ctx.fillStyle = 'rgba(0,229,255,0.15)';
+    ctx.font = '12px Orbitron, monospace';
+    ctx.fillText('ATLANTIC OCEAN', 20, 24);
+  }
+
+  function drawPoints() {
+    points.forEach((p, i) => {
+      const {x,y} = toCanvas(p.x, p.y);
+      const isHov = hovered === i;
+      const r = isHov ? 10 : 7;
+
+      // Outer glow ring
+      ctx.beginPath();
+      ctx.arc(x, y, r + 6, 0, Math.PI*2);
+      ctx.fillStyle = p.color.replace('#','rgba(').replace(/(..)(..)(..)/, (_,a,b,c) =>
+        `${parseInt(a,16)},${parseInt(b,16)},${parseInt(c,16)},0.15)`);
+      ctx.fill();
+
+      // Dot
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI*2);
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = isHov ? 20 : 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      // Label
+      if (isHov) {
+        const pad = 8;
+        const lw = ctx.measureText(p.label).width + pad*2;
+        ctx.fillStyle = 'rgba(3,6,15,0.92)';
+        ctx.beginPath();
+        ctx.roundRect(x - lw/2, y - 38, lw, 22, 4);
+        ctx.fill();
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.fillStyle = '#fff';
+        ctx.font = '11px Exo 2, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(p.label, x, y - 22);
+        ctx.textAlign = 'left';
+      }
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Background
+    const bg = ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+    bg.addColorStop(0,'#030a18'); bg.addColorStop(1,'#050e20');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    drawGrid(); drawOcean(); drawRoads(); drawPoints();
+
+    // Location label
+    ctx.fillStyle = 'rgba(0,229,255,0.6)';
+    ctx.font = 'bold 11px Orbitron, monospace';
+    ctx.fillText('TOUBAB DIALAW', canvas.width/2 - 60, canvas.height/2 - 10);
+  }
+
+  // Interaction
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    hovered = null;
+    points.forEach((p, i) => {
+      const {x,y} = toCanvas(p.x, p.y);
+      if (Math.hypot(mx-x, my-y) < 14) hovered = i;
+    });
+    if (isDragging) {
+      offsetX += mx - lastX; offsetY += my - lastY;
+      lastX = mx; lastY = my;
+    }
+    canvas.style.cursor = hovered !== null ? 'pointer' : isDragging ? 'grabbing' : 'grab';
+    draw();
+  });
+  canvas.addEventListener('mousedown', e => { isDragging = true; lastX = e.offsetX; lastY = e.offsetY; });
+  canvas.addEventListener('mouseup', () => isDragging = false);
+  canvas.addEventListener('mouseleave', () => { isDragging = false; hovered = null; draw(); });
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.1 : 0.9;
+    scale = Math.max(0.5, Math.min(3, scale * factor));
+    draw();
+  });
+
+  window.zoomIn  = () => { scale = Math.min(3, scale * 1.2); draw(); };
+  window.zoomOut = () => { scale = Math.max(0.5, scale / 1.2); draw(); };
+  window.resetMap = () => { scale = 1; offsetX = 0; offsetY = 0; draw(); };
+
+  resize();
+  window.addEventListener('resize', resize);
+})();
+
+/* -------- Counter Animation -------- */
+function animateCounter(el, target, suffix='') {
+  let start = 0;
+  const step = target / 60;
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = Math.floor(start).toLocaleString() + suffix;
+    if (start >= target) clearInterval(timer);
+  }, 25);
+}
+
+const countersStarted = { done: false };
+function startCounters() {
+  if (countersStarted.done) return;
+  countersStarted.done = true;
+  animateCounter(document.getElementById('stat1'), 347, '+');
+  animateCounter(document.getElementById('stat2'), 89, '+');
+  animateCounter(document.getElementById('stat3'), 524, '+');
+  animateCounter(document.getElementById('stat4'), 62, '+');
+}
+
+/* -------- Scroll Reveal -------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+const heroObserver = new IntersectionObserver((entries) => {
+  if (!entries[0].isIntersecting) startCounters();
+}, { threshold: 0.3 });
+heroObserver.observe(document.getElementById('hero'));
+
+// Start counters after 2s fallback
+setTimeout(startCounters, 2000);
+
+/* -------- Navbar Scroll -------- */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.background = window.scrollY > 40
+    ? 'rgba(3,6,15,0.96)' : 'rgba(3,6,15,0.82)';
+});
+
+/* -------- Mobile Menu -------- */
+document.getElementById('hamburgerBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* -------- Category strip pills -------- */
+document.querySelectorAll('.cat-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+/* -------- Helper smooth scroll -------- */
+function scrollTo(selector) {
+  const el = document.querySelector(selector);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* -------- Hover glow on glass-cards -------- */
+document.querySelectorAll('.glass-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
+    const y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+    card.style.setProperty('--mx', x + '%');
+    card.style.setProperty('--my', y + '%');
+  });
+});
+</script>
+</body>
+</html>
